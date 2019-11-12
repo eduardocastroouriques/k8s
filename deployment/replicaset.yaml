@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+   app: webapp-pod
+spec:
+  selector:
+    matchLabels:
+      app: webapp-pod
+  replicas: 3
+  template: # template for pods
+    metadata: 
+     labels:
+      app: webapp-pod
+    spec:
+     containers:
+     - name: webapp
+       image: richardchesterwood/k8s-fleetman-webapp-angular:release0
